@@ -1,0 +1,15 @@
+App\Domain\Entity\Order:
+  type: entity
+  table: order
+  fields:
+    id:
+      type: string
+      id: true
+    createdAt:
+      type: datetime
+  manyToOne:
+    customer:
+      targetEntity: Customer
+      joinColumn:
+        name: customer_id
+        referencedColumnName: id
