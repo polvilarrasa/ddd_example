@@ -2,15 +2,17 @@
 
 namespace App\Domain\Entity;
 
+use DateTime;
+
 class Customer
 {
     private string $id;
     private string $name;
     private string $email;
     private string $password;
-    private \DateTime $createdAt;
+    private DateTime $createdAt;
 
-    private function __construct(string $id, string $name, string $email, string $password, \DateTime $createdAt)
+    private function __construct(string $id, string $name, string $email, string $password, DateTime $createdAt)
     {
         $this->id = $id;
         $this->name = $name;
@@ -19,7 +21,7 @@ class Customer
         $this->createdAt = $createdAt;
     }
 
-    public static function create(string $id, string $name, string $email, string $password, \DateTime $createdAt): self
+    public static function create(string $id, string $name, string $email, string $password, DateTime $createdAt): self
     {
         return new self($id, $name, $email, $password, $createdAt);
     }
@@ -51,7 +53,7 @@ class Customer
         return $this->password;
     }
 
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }

@@ -2,7 +2,9 @@
 
 namespace App\Domain\Exception\Customer;
 
-class CustomerNotFoundException extends \Exception
+use Exception;
+
+class CustomerNotFoundException extends Exception
 {
     public function __construct(string $customerId)
     {

@@ -1,6 +1,6 @@
 App\Domain\Entity\Order:
   type: entity
-  table: order
+  table: "`order`"
   fields:
     id:
       type: string

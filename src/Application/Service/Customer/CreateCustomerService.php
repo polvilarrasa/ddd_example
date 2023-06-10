@@ -18,7 +18,6 @@ class CreateCustomerService
     {
         return $presenter->write(
             $this->createCustomer->execute(
-                $request->getCustomerId(),
                 $request->getName(),
                 $request->getEmail(),
                 $request->getPassword()

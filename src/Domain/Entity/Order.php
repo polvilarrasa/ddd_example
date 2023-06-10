@@ -2,20 +2,22 @@
 
 namespace App\Domain\Entity;
 
+use DateTime;
+
 class Order
 {
     private string $id;
-    private \DateTime $createdAt;
+    private DateTime $createdAt;
     private Customer $customer;
 
-    private function __construct(string $id, \DateTime $createdAt, Customer $customer)
+    private function __construct(string $id, DateTime $createdAt, Customer $customer)
     {
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->customer = $customer;
     }
 
-    public static function create(string $id, \DateTime $createdAt, Customer $customer): self
+    public static function create(string $id, DateTime $createdAt, Customer $customer): self
     {
         return new self($id, $createdAt, $customer);
     }
@@ -25,7 +27,7 @@ class Order
         return $this->id;
     }
 
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }

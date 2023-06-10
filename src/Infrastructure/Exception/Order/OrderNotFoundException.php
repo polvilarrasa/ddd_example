@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Exception\Order;
+namespace App\Infrastructure\Exception\Order;
 
 use Exception;
 
@@ -8,6 +8,6 @@ class OrderNotFoundException extends Exception
 {
     public function __construct(string $orderId)
     {
-        parent::__construct("Order with id: $orderId not found.");
+        parent::__construct(sprintf('Order with id %s not found', $orderId));
     }
 }

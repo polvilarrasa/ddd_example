@@ -2,7 +2,9 @@
 
 namespace App\Application\Exception\Customer;
 
-class CustomerIdIsNotValidUuidException extends \Exception
+use Exception;
+
+class CustomerIdIsNotValidUuidException extends Exception
 {
     public function __construct(string $customerId)
     {

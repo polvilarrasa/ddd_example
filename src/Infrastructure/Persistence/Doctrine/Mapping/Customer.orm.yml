@@ -1,0 +1,15 @@
+App\Domain\Entity\Customer:
+  type: entity
+  table: customer
+  fields:
+    id:
+      type: string
+      id: true
+    name:
+      type: string
+    email:
+      type: string
+    password:
+      type: string
+    createdAt:
+      type: datetime

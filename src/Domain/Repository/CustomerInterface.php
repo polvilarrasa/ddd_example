@@ -8,7 +8,7 @@ interface CustomerInterface
 {
     /**
      * @param Customer $customer
-     * @return int
+     * @return Customer
      */
     public function save(Customer $customer): Customer;
 

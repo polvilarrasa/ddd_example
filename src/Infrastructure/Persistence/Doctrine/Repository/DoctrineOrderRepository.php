@@ -4,9 +4,9 @@ namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Domain\Entity\Order;
 use App\Domain\Repository\OrderInterface;
+use App\Infrastructure\Exception\Order\OrderNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\Persistence\ObjectRepository;
 
 class DoctrineOrderRepository extends EntityRepository implements OrderInterface
@@ -37,15 +37,17 @@ class DoctrineOrderRepository extends EntityRepository implements OrderInterface
         return $this->repository->findAll();
     }
 
-    public function deleteOrder(string $orderId): bool
+    /**
+     * @throws OrderNotFoundException
+     */
+    public function deleteOrder(string $orderId): void
     {
         $order = $this->repository->find($orderId);
         if (!$order) {
-            return false;
+            throw new OrderNotFoundException($orderId);
         }
         $this->em->remove($order);
         $this->em->flush();
-        return true;
     }
 
     public function getOrdersByCustomerId(string $customerId): array

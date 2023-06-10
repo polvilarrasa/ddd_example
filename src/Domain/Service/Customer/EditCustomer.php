@@ -4,10 +4,8 @@ namespace App\Domain\Service\Customer;
 
 use App\Domain\Entity\Customer;
 use App\Domain\Repository\CustomerInterface;
-use DateTime;
-use Ramsey\Uuid\Uuid;
 
-class CreateCustomer
+class EditCustomer
 {
     private CustomerInterface $customerRepository;
 
@@ -16,9 +14,11 @@ class CreateCustomer
         $this->customerRepository = $customerRepository;
     }
 
-    public function execute($name, $email, $password): Customer
+    public function execute($id, $name, $email, $password): Customer
     {
-        $customer = Customer::create(Uuid::uuid4()->toString(), $name, $email, $password, new DateTime());
+        $customer = $this->customerRepository->getCustomerById($id);
+
+        $customer->edit($name, $email, $password);
 
         $this->customerRepository->save($customer);
 

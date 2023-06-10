@@ -3,6 +3,7 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\Order;
+use App\Infrastructure\Exception\Order\OrderNotFoundException;
 
 interface OrderInterface
 {
@@ -25,9 +26,10 @@ interface OrderInterface
 
     /**
      * @param string $orderId
-     * @return bool
+     * @throws OrderNotFoundException
+     * @return void
      */
-    public function deleteOrder(string $orderId): bool;
+    public function deleteOrder(string $orderId): void;
 
     /**
      * @param string $customerId
