@@ -33,7 +33,7 @@ class UpdateCustomerFieldsService
 
         return $presenter->write(
             $this->editCustomer->execute(
-                $request->getCustomerId(),
+                $customer->getId(),
                 $request->getName(),
                 $request->getEmail(),
                 $customer->getPassword()
